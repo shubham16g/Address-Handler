@@ -2,6 +2,8 @@
 header('Content-Type: application/json');
 require './class.AddressHandler.php';
 
+
+
 try {
     $ah = new AddressHandler(new mysqli('localhost', 'root', '', 'eleamapi'));    
 

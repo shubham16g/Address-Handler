@@ -8,6 +8,9 @@ class AddressHandler
 
     public const ERROR_MYSQLI_QUERY_MSG = 'Error in mysqli query';
     public const ERROR_MYSQLI_QUERY_CODE = 964;
+    public const ERROR_MYSQLI_CONNECT_MSG = 'Error in mysqli connection';
+    public const ERROR_MYSQLI_CONNECT_CODE = 458;
+
 
     public function __construct(mysqli $db)
     {
@@ -29,7 +32,7 @@ class AddressHandler
 
 
         if ($db->connect_errno) {
-            throw new Exception($db->connect_error, $db->connect_errno);
+            throw new Exception(self::ERROR_MYSQLI_CONNECT_MSG, self::ERROR_MYSQLI_CONNECT_CODE);
         } elseif (!$db->query($create)) {
             throw new Exception(self::ERROR_MYSQLI_QUERY_MSG, self::ERROR_MYSQLI_QUERY_CODE);
         }
