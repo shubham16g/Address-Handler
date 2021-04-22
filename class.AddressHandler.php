@@ -75,7 +75,11 @@ class AddressHandler
 
     public function getAddressByAddressID(int $addressID)
     {
-        return $this->_getAddresses('addressID', $addressID)[0];
+        $resArray = $this->_getAddresses('addressID', $addressID);
+        if (!empty($resArray)) {
+            return [0];
+        }
+        return null;
     }
 
     private function _getAddresses(string $key, string $value)
